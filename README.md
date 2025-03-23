@@ -224,7 +224,7 @@ earlystopping = EarlyStopping(monitor="val_accuracy",patience=10,restore_best_we
 - Stops training early if validation loss doesn't improve for 10 epochs.
 
 ```python
-model.fit(X_train, y_train, epochs=1000, batch_size=1024, validation_split=0.2, callbacks=[earlystopping])
+model.fit(X_train, y_train, epochs=200, batch_size=1024, validation_split=0.2, callbacks=[earlystopping])
 ```
 **Explanation:**
 - Trains the model with batch size 1024 for a maximum of 1000 epochs.
