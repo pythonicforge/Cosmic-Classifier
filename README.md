@@ -41,7 +41,7 @@ from tensorflow.keras.layers import BatchNormalization
 
 - **`from sklearn.preprocessing import MinMaxScaler`**  
   - Imports **MinMaxScaler** from Scikit-learn.  
-  - Used to scale data between a given range (usually 0 to 1).  
+  - Used to scale data between a given range (-1 to 1 in our case).  
 
 - **`from tensorflow.keras.layers import Dropout`**  
   - **Dropout Layer**: A regularization technique that randomly disables some neurons during training to prevent overfitting.  
@@ -218,16 +218,16 @@ model.compile(optimizer="adam",loss=tf.keras.losses.SparseCategoricalCrossentrop
 ### **5. Training the Model**
 ```python
 from tensorflow.keras.callbacks import EarlyStopping
-earlystopping = EarlyStopping(monitor="val_accuracy",patience=10,restore_best_weights=True)
+earlystopping = EarlyStopping(monitor="val_accuracy",patience=20,restore_best_weights=True)
 ```
 **Explanation:**
-- Stops training early if validation loss doesn't improve for 10 epochs.
+- Stops training early if validation loss doesn't improve for 20 epochs.
 
 ```python
 model.fit(X_train, y_train, epochs=200, batch_size=1024, validation_split=0.2, callbacks=[earlystopping])
 ```
 **Explanation:**
-- Trains the model with batch size 1024 for a maximum of 1000 epochs.
+- Trains the model with batch size 1024 for a maximum of 200 epochs.
 - Applies early stopping to prevent overfitting.
 
 ### **6. Evaluating the Model**
